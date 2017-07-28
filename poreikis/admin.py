@@ -13,7 +13,7 @@ class RequestAdmin(admin.ModelAdmin):
     list_display = ('project_name', 'status', 'created', 'updated')
     list_filter = ('status',)
     raw_id_fields = ('project',)
-    inlines = [RequestDatasetInline, TreeRelatedFieldListFilter]
+    inlines = [RequestDatasetInline]
     exclude = ('datasets',)
 
 
@@ -22,7 +22,7 @@ class ProjectAdmin(admin.ModelAdmin):
 
 
 class DatasetAdmin(admin.ModelAdmin):
-    pass
+    list_filter = (('category', TreeRelatedFieldListFilter),)
 
 
 class OrganizationAdmin(admin.ModelAdmin):
