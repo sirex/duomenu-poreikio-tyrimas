@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+{% block content %}
+    <div class="page-header">
+        <h1>Duomenų poreikio tyrimas</h1>
+    </div>
+
+
+
+        <div class="row">
+            <div class="col-md-6">
+                <form action="/" method="post" class="form">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    {% buttons %}
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            Pasidalink!
+                        </button>
+                    {% endbuttons %}
+                </form>
+            </div>
+
+            <div class="col-md-6">
+                <div class="jumbotron">
+                    <p>Nori įgyvendinti projektą ar žinai kas turi tokią
+                    idėją, kurios įgyvendinimui reikalingi atviri duomenys?
+                    <strong>Pasidalink!</strong></p>
+                    <p><small>
+                        Artimiausiu metu Lietuva planuoja panaudoti Europos
+                        sąjungos investicijas atveriant arba gerinant atvertų
+                        duomenų kokybę. Prieš pradedant duomenų atvėrimo projektą,
+                        projekto vykdytojai nori žinoti kokie duomenys yra
+                        aktualiausi ir nuo ko pradėti duomenų atvėrimą.
+                    </small></p>
+                </div>
+            </div>
+        </div>
+
+    {% if datasets %}
+        <div class="page-header">
+            <h2>Tyrimo rezultatai</h2>
+        </div>
+
+        <table class="table">
+            <tbody>
+                {% for ds in datasets %}
+                <tr>
+                    <td>{{ ds.name }}</td>
+                    <td>{{ ds.projects }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+{% endblock %}
