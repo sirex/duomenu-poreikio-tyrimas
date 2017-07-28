@@ -68,7 +68,7 @@ class Request(models.Model):
         (SPAM, "Šlamštas"),
     )
 
-    project_name = models.CharField(max_length=255, verbose_name="Projekto ar idėjos pavadinimas")
+    project_name = models.CharField(max_length=255, verbose_name="Projekto ar idėjos pavadinimas/tikslas")
     author_email = models.EmailField(blank=True, verbose_name="El. pašto adresas pasiteiravimui (nurodyti nebūtina)")
     description = models.TextField(verbose_name="Projekto ar idėjos ir duomenų poreikio aprašymas")
     created = models.DateTimeField(auto_now_add=True, editable=False, verbose_name="Sukurta")
